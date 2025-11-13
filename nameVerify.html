@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Name verification</title>
+  </head>
+  <body>
+    <form onsubmit="test()">
+      <textarea name="Username" id="username" onblur="test()"></textarea>
+      <p id="nameError"></p>
+      <input type="submit" value="submit" />
+    </form>
+
+    <script>
+      let username = document.getElementById("username").value.trim();
+      let nameError = document.getElementById("nameError");
+
+      function isValid() {
+        let char = username[i];
+        let isUp = char >= "A" && char <= "Z";
+        let isLow = char >= "a" && char <= "z";
+        let isDot = char === ".";
+        let isDash = char === "-";
+
+        let valid = (if (!(isUp || isLow || isDash || isDot)) {
+            return false;
+          } else {
+            return true;
+          });
+
+      }
+
+      function checkName() {
+        let rrMsg = '';
+
+        if (username.length === 0) {
+          rrMsg = "Cannot be empty";
+        } else {
+          let firstChar = value.trim()[0];
+
+          if(!(username.isValid())==false){
+            rrMsg="Name contains invalid character";
+          }else{
+            let words = [];
+            let wCount = (value.trim()).split();
+            for (let i=0; i<wCount.length; i++){
+              words.push(wCount[i]);
+            }
+
+            if(words.length<2){
+              rrMsg="Have to be two words";
+            }else{
+
+            }
+          }
+
+        }
+      }
+    </script>
+  </body>
+</html>
