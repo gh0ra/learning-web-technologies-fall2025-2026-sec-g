@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <script>
+      const calculator = document.createElement("div");
+      document.body.appendChild(calculator);
+
+      const bttnsContainer = document.createElement("div");
+      calculator.appendChild(bttns);
+
+      const display = document.createElement("input");
+      display.type = "text";
+      display.readOnly = true;
+      display.value = "0";
+      calculator.appendChild(display);
+
+      const buttons = [
+        "7",
+        "8",
+        "9",
+        "/",
+        "4",
+        "5",
+        "6",
+        "*",
+        "1",
+        "2",
+        "3",
+        "-",
+        "0",
+        "C",
+        "=",
+        "+",
+      ];
+
+      let currInput = "0";
+      let prevInput = "";
+      let operation = null;
+      let clearDisplay = false;
+
+      buttons.forEach((text) => {
+        const button = document.createElement("button");
+        button.textContent = text;
+        button.addEventListener("click", () => handleClick(text));
+        buttonsContainer.appendChild(button);
+      });
+
+      function handleClick(i) {
+        if (i >= "0" && i <= "9") {
+          if (currInput === "0" || clearDisplay) {
+            currInput = i;
+            clearDisplay = false;
+          } else {
+            currInput += i;
+          }
+          display.value = currInput;
+        } else if (i === "C") {
+          currInput = "0";
+          previous = "";
+          operator = null;
+          display.value = currInput;
+        } else if (i === "=") {
+          calculate();
+        } else {
+          if (operator && !clearDisplay) {
+            calculate();
+          }
+          previous = currInput;
+          operator = i;
+          clearDisplay = true;
+        }
+      }
+
+      function calculate() {
+        function calculate() {
+          let first = parseFloat(prevInput);
+          let second = parseFloat(currInput);
+
+          if (isNaN(first) || isNaN(second)) return;
+
+          let result;
+          if (operator === "+") {
+            result = first + second;
+          }
+          if (operator === "-") {
+            result = first - second;
+          }
+          if (operator === "*") {
+            result = first * second;
+          }
+          if (operator === "/") {
+            if (second !== 0) {
+              result = first / second;
+            } else {
+              result = "Error";
+            }
+          }
+
+          currInput = result.toString();
+          display.value = currInput;
+          operator = null;
+        }
+      }
+    </script>
+  </body>
+</html>
