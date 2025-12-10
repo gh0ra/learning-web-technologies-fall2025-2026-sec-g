@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHP Form Validation</title>
+  </head>
+  <body>
+    <form
+      method="post"
+      action="task32.php"
+      enctype="application/x-www-form-urlencoded"
+    >
+      <fieldset>
+        <legend>Lab Tasj</legend>
+        <div style="border: 1px">
+          <label for="name">NAME</label>
+          <input type="text" name="name" id="name" required />
+          <p style="color: red">
+            <?php echo $nameError; ?>
+          </p>
+        </div>
+        <!---2--->
+        <div style="border: 1px">
+          <label for="email">EMAIL</label>
+          <input type="email" name="email" id="email" required />
+          <p style="color: red">
+            <?php echo $emailError; ?>
+          </p>
+        </div>
+        <!--3-->
+        <div style="border: 1px">
+          <label for="dob">DATE OF BIRTH</label>
+          <input type="date" name="dob" id="dob" />
+          <p style="color: red">
+            <?php echo $dobError; ?>
+          </p>
+        </div>
+        <!--4[Gender]-->
+        <div style="border: 1px">
+          <label for="gender">GENDER</label>
+
+          <input type="radio" id="male" name="Gender" value="male" />
+          <label for="male">Male</label>
+
+          <input type="radio" id="female" name="Gender" value="female" />
+          <label for="female">Female</label>
+
+          <input type="radio" id="others" name="Gender" value="others" />
+          <label for="others">Other</label>
+
+          <p style="color: red">
+            <?php echo $genderError; ?>
+          </p>
+        </div>
+        <!--Degree-->
+        <div style="border: 1px">
+          <label for="degree">DDEGREE</label>
+
+          <input type="checkbox" id="ssc" name="ssc" />
+          <label for="ssc">SSC</label>
+
+          <input type="checkbox" id="hsc" name="hsc" />
+          <label for="hsc">HSC</label>
+
+          <input type="checkbox" id="bsc" name="bsc" />
+          <label for="bsc">BSc</label>
+
+          <input type="checkbox" id="msc" name="msc" />
+          <label for="msc">MSc</label>
+
+          <p style="color: red">
+            <?php echo $degreeError; ?>
+          </p>
+        </div>
+
+        <!--bg-->
+        <div style="border: 1px">
+          <label for="bg">BLOOD GROUP</label>
+          <select name="bg">
+            <option value="Apos">A+</option>
+            <option value="Aneg">A-</option>
+            <option value="Bpos">B+</option>
+            <option value="Bneg">B-</option>
+            <option value="ABpos">AB+</option>
+            <option value="ABneg">AB-</option>
+            <option value="Opos">O+</option>
+            <option value="Oneg">O-</option>
+          </select>
+          <p style="color: red">
+            <?php echo $bgError; ?>
+          </p>
+        </div>
+
+        <div>
+          <button type="submit" name="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
