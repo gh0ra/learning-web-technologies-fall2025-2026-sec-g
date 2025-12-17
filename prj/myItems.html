@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <title>Manage My Items</title>
+  </head>
+  <body>
+    <script src="../Controllers/popUp.js"></script>
+    <script src="../Controllers/editPopUp.js"></script>
+    <script src="../Controllers/renderTable.js"></script>
+    <script src="../Controllers/deleteItems.js"></script>
+
+    <header>
+      <span>AIUB LostLink</span>
+      <a href="">Home</a>
+      <a href="">Lost Items</a>
+      <a href="">Found Items</a>
+      <a href="">History</a>
+      <button onclick="logout()">Log Out</button>
+    </header>
+
+    <h1>Manage My Items</h1>
+
+    <p>User Email: abdullah.farhan@aiub.edu</p>
+    <p>Student ID: 22-47544-2</p>
+
+    <div>
+      <input type="text" id="searchInput" onkeyup="searchItems()" />
+      <select id="typeFilter">
+        <option value="">All Types</option>
+        <option value="lost">Lost</option>
+        <option value="found">Found</option>
+      </select>
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="electronics">Electronics</option>
+        <option value="accessories">Accessories</option>
+        <option value="documents">Documents</option>
+        <option value="books">Books</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="open">Open</option>
+        <option value="claimed">Claimed</option>
+      </select>
+      <button onclick="openPopUp()">Add Item</button>
+    </div>
+
+    <div>
+      <table border="1">
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <tbody id="itemsTable"></tbody>
+      </table>
+    </div>
+
+    <div id="editPopUp" style="display: none">
+      <div
+        style="
+          background: white;
+          width: 400px;
+          margin: 50px auto;
+          padding: 20px;
+          border: 2px solid black;
+        "
+      >
+        <h2>Edit Item</h2>
+        <form onsubmit="return updateItem();">
+          <input type="hidden" id="editIndex" />
+          <table>
+            <tr>
+              <td>Type:</td>
+              <td>
+                <select id="editType">
+                  <option value="lost">Lost</option>
+                  <option value="found">Found</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Title:</td>
+              <td><input type="text" id="editTitle" required /></td>
+            </tr>
+            <tr>
+              <td>Category:</td>
+              <td>
+                <select id="editCategory">
+                  <option value="electronics">Electronics</option>
+                  <option value="accessories">Accessories</option>
+                  <option value="documents">Documents</option>
+                  <option value="books">Books</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td><input type="text" id="editLocation" required /></td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td><input type="date" id="editDate" required /></td>
+            </tr>
+            <tr>
+              <td>Status:</td>
+              <td>
+                <select id="editStatus">
+                  <option value="open">Open</option>
+                  <option value="claimed">Claimed</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><textarea id="editDescription"></textarea></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit">Update</button>
+                <button type="button" onclick="closeEditPopUp()">Cancel</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div id="addPopUp" style="display: none">
+      <div
+        style="
+          background: white;
+          width: 400px;
+          margin: 50px auto;
+          padding: 20px;
+          border: 2px solid black;
+        "
+      >
+        <h2>Add New Item</h2>
+        <form onsubmit="return saveItem();">
+          <table>
+            <tr>
+              <td>Type:</td>
+              <td>
+                <select id="newType">
+                  <option value="lost">Lost</option>
+                  <option value="found">Found</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Title:</td>
+              <td><input type="text" id="newTitle" required /></td>
+            </tr>
+            <tr>
+              <td>Category:</td>
+              <td>
+                <select id="newCategory">
+                  <option value="electronics">Electronics</option>
+                  <option value="accessories">Accessories</option>
+                  <option value="documents">Documents</option>
+                  <option value="books">Books</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td><input type="text" id="newLocation" required /></td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td><input type="date" id="newDate" required /></td>
+            </tr>
+            <tr>
+              <td>Status:</td>
+              <td>
+                <select id="newStatus">
+                  <option value="open">Open</option>
+                  <option value="claimed">Claimed</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><textarea id="newDescription"></textarea></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit">Save</button>
+                <button type="button" onclick="closePopUp()">Cancel</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      renderTable();
+    </script>
+  </body>
+</html>
